@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolex Submariner Reference Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent-gold: #d4af37;
+            --accent-green: #2ecc71;
+            --border: #2a2a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--accent-gold);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: 
+                radial-gradient(ellipse at top, rgba(212, 175, 55, 0.1), transparent),
+                radial-gradient(ellipse at bottom, rgba(46, 204, 113, 0.05), transparent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.03), transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.5;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding: 0 2rem;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--accent-gold), #fff, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            font-family: 'Roboto Mono', monospace;
+            line-height: 1.8;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-gold), var(--accent-green));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 6rem;
+            animation: fadeInUp 0.8s ease-out both;
+            opacity: 0;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -3rem;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--accent-gold);
+            border: 3px solid var(--bg-dark);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .model-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .model-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .model-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .model-info h3 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-gold);
+        }
+
+        .model-year {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1rem;
+            color: var(--accent-green);
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .model-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .model-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .model-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1), transparent);
+        }
+
+        .model-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+        }
+
+        .model-image img:hover {
+            transform: scale(1.15);
+        }
+
+        .model-features {
+            padding: 2.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature {
+            padding: 1.5rem;
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 3px solid var(--accent-gold);
+            border-radius: 4px;
+        }
+
+        .feature-label {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-value {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .highlights {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .highlights h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        .highlights ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .highlights li {
+            padding: 0.8rem 0;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .highlights li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.1em;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .model-header {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .timeline-marker {
+                left: -2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">WatchRef</div>
+            <ul>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#models">Models</a></li>
+                <li><a href="#reference">Reference</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="subtitle">The Complete</div>
+            <h1>Rolex Submariner</h1>
+            <p>A comprehensive reference guide to every major model from 1953 to present. Explore the evolution of the world's most iconic dive watch.</p>
+        </div>
+    </section>
+
+    <!-- Main Timeline -->
+    <section id="timeline" class="container">
+        <div class="section-header">
+            <h2 class="section-title">Historical Timeline</h2>
+            <p class="section-description">The Submariner's journey from pioneering dive tool to horological icon spans over seven decades of continuous refinement and innovation.</p>
+        </div>
+
+        <div class="timeline">
+            <!-- Reference 6204 (1953) -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-year">1953 - 1954</div>
+                            <h3>Reference 6204</h3>
+                            <p class="model-description">The genesis. The first watch to bear the "Submariner" name on its dial, introducing the world to Rolex's revolutionary dive watch concept with 100m water resistance.</p>
+                        </div>
+                        <div class="model-image">
+                            <img src="submariner-6204.jpg" alt="Rolex Submariner 6204">
+                        </div>
+                    </div>
+                    <div class="model-features">
+                        <div class="features-grid">
+                            <div class="feature">
+                                <div class="feature-label">Case Size</div>
+                                <div class="feature-value">37-38mm</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Movement</div>
+                                <div class="feature-value">Cal. A260</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Water Resistance</div>
+                                <div class="feature-value">100m (330ft)</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Bezel</div>
+                                <div class="feature-value">Bi-directional</div>
+                            </div>
+                        </div>
+                        <div class="highlights">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Slim case profile with small 5.3mm crown</li>
+                                <li>Gilt dial with pencil hands and "lollipop" seconds hand</li>
+                                <li>Bold bezel design missing markings between 0-15 minutes</li>
+                                <li>Revolutionary Twinlock crown with dual O-rings</li>
+                                <li>First official Submariner reference</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reference 6200 & 6205 (1954-1955) -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-year">1954 - 1955</div>
+                            <h3>Reference 6200 & 6205</h3>
+                            <p class="model-description">Evolution begins. The 6200 introduced the iconic Mercedes hands and larger crown, while the 6205 came in both clean dial and Mercedes hand variants.</p>
+                        </div>
+                        <div class="model-image">
+                            <img src="submariner-6200.jpg" alt="Rolex Submariner 6200">
+                        </div>
+                    </div>
+                    <div class="model-features">
+                        <div class="features-grid">
+                            <div class="feature">
+                                <div class="feature-label">Case Size</div>
+                                <div class="feature-value">37-38mm</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Movement</div>
+                                <div class="feature-value">Cal. A296</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Water Resistance</div>
+                                <div class="feature-value">100-200m</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Dial Variants</div>
+                                <div class="feature-value">Multiple</div>
+                            </div>
+                        </div>
+                        <div class="highlights">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Ref. 6200: Larger "Big Crown" for easier underwater operation</li>
+                                <li>Introduction of the famous Mercedes handset (6200)</li>
+                                <li>Ref. 6205: Some with "clean dial" (no Submariner text)</li>
+                                <li>Rare 3-6-9 Explorer-style dial variants (6200)</li>
+                                <li>Highly sought after by collectors for distinctive design</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reference 6536 & 6538 (1955-1959) -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-year">1955 - 1959</div>
+                            <h3>Reference 6536 & 6538</h3>
+                            <p class="model-description">The "James Bond" era. The 6538 became immortalized when Sean Connery wore it in Dr. No and other early Bond films, cementing its legendary status.</p>
+                        </div>
+                        <div class="model-image">
+                            <img src="submariner-6536.jpg" alt="Rolex Submariner 6536 James Bond">
+                        </div>
+                    </div>
+                    <div class="model-features">
+                        <div class="features-grid">
+                            <div class="feature">
+                                <div class="feature-label">Case Size</div>
+                                <div class="feature-value">38mm</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Movement</div>
+                                <div class="feature-value">Cal. 1030</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Water Resistance</div>
+                                <div class="feature-value">100-200m</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Crown</div>
+                                <div class="feature-value">Big Crown (6538)</div>
+                            </div>
+                        </div>
+                        <div class="highlights">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Ref. 6536: Small crown with improved Cal. 1030 movement</li>
+                                <li>Ref. 6538: Big Crown variant with 8mm winding crown</li>
+                                <li>Some 6536 models were COSC certified (6536/1)</li>
+                                <li>Featured in multiple James Bond films (Dr. No, From Russia with Love)</li>
+                                <li>Extremely collectible with strong provenance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reference 5512 & 5513 (1959-1989) -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-year">1959 - 1989</div>
+                            <h3>Reference 5512 & 5513</h3>
+                            <p class="model-description">Three decades of excellence. The longest-running vintage references, introducing crown guards and defining the modern Submariner aesthetic we know today.</p>
+                        </div>
+                        <div class="model-image">
+                            <img src="submariner-5512.jpg" alt="Rolex Submariner 5512">
+                        </div>
+                    </div>
+                    <div class="model-features">
+                        <div class="features-grid">
+                            <div class="feature">
+                                <div class="feature-label">Case Size</div>
+                                <div class="feature-value">40mm</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Movement</div>
+                                <div class="feature-value">Cal. 1530/1520</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Water Resistance</div>
+                                <div class="feature-value">200m (660ft)</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Certification</div>
+                                <div class="feature-value">5512: COSC</div>
+                            </div>
+                        </div>
+                        <div class="highlights">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>First Submariners with protective crown guards</li>
+                                <li>Crown guard evolution: Square, Eagle Beak, Pointed, Modern (1959-1964)</li>
+                                <li>Ref. 5512: COSC-certified chronometer movement</li>
+                                <li>Ref. 5513: Non-COSC, more affordable, longer production (30 years)</li>
+                                <li>Transition from radium to tritium luminous material (1960s)</li>
+                                <li>Multiple dial variants: gilt, matte, glossy</li>
+                                <li>Military variants (5513 Milsub) extremely rare and valuable</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reference 1680 (1969-1979) -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-year">1969 - 1979</div>
+                            <h3>Reference 1680</h3>
+                            <p class="model-description">The date arrives. After 16 years, Rolex added a date complication to the Submariner, creating the Submariner Date lineage that continues today.</p>
+                        </div>
+                        <div class="model-image">
+                            <img src="submariner-1680.jpg" alt="Rolex Submariner 1680">
+                        </div>
+                    </div>
+                    <div class="model-features">
+                        <div class="features-grid">
+                            <div class="feature">
+                                <div class="feature-label">Case Size</div>
+                                <div class="feature-value">40mm</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Movement</div>
+                                <div class="feature-value">Cal. 1575</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Water Resistance</div>
+                                <div class="feature-value">200m (660ft)</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Date Window</div>
+                                <div class="feature-value">Cyclops lens</div>
+                            </div>
+                        </div>
+                        <div class="highlights">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>First Submariner with date complication at 3 o'clock</li>
+                                <li>Cyclops magnification lens on crystal</li>
+                                <li>Early models had red "SUBMARINER" text on dial (Red Sub)</li>
+                                <li>Later models featured white text</li>
+                                <li>Available in stainless steel only initially</li>
+                                <li>Highly collectible, especially red text variants</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reference 16800 (1979-1988) -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-year">1979 - 1988</div>
+                            <h3>Reference 16800</h3>
+                            <p class="model-description">Modern materials arrive. The transition to sapphire crystal and increased water resistance marked the beginning of the contemporary Submariner era.</p>
+                        </div>
+                        <div class="model-image">
+                            <img src="submariner-16800.jpg" alt="Rolex Submariner 16800">
+                        </div>
+                    </div>
+                    <div class="model-features">
+                        <div class="features-grid">
+                            <div class="feature">
+                                <div class="feature-label">Case Size</div>
+                                <div class="feature-value">40mm</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Movement</div>
+                                <div class="feature-value">Cal. 3035</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Water Resistance</div>
+                                <div class="feature-value">300m (1,000ft)</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Crystal</div>
+                                <div class="feature-value">Sapphire</div>
+                            </div>
+                        </div>
+                        <div class="highlights">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>First Submariner with scratch-resistant sapphire crystal</li>
+                                <li>Tripled water resistance to 300m through improved case seals</li>
+                                <li>Early models: matte dial with painted indices</li>
+                                <li>Later models: glossy dial with applied white gold indices</li>
+                                <li>Unidirectional bezel replaced bi-directional (later production)</li>
+                                <li>Cal. 3035 introduced quickset date function</li>
+                                <li>Transitional reference bridging vintage and modern eras</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reference 16610 (1988-2010) -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-year">1988 - 2010</div>
+                            <h3>Reference 16610</h3>
+                            <p class="model-description">The modern classic. Over two decades of production made this the most recognizable and beloved Submariner of the contemporary era.</p>
+                        </div>
+                        <div class="model-image">
+                            <img src="submariner-16610.jpg" alt="Rolex Submariner 16610">
+                        </div>
+                    </div>
+                    <div class="model-features">
+                        <div class="features-grid">
+                            <div class="feature">
+                                <div class="feature-label">Case Size</div>
+                                <div class="feature-value">40mm</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Movement</div>
+                                <div class="feature-value">Cal. 3135</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Water Resistance</div>
+                                <div class="feature-value">300m (1,000ft)</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Production</div>
+                                <div class="feature-value">22 years</div>
+                            </div>
+                        </div>
+                        <div class="highlights">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Powered by legendary Cal. 3135 (still used in variants today)</li>
+                                <li>Enhanced accuracy and reliability over Cal. 3035</li>
+                                <li>Glossy dial with applied white gold hour markers</li>
+                                <li>Unidirectional bezel with aluminum insert</li>
+                                <li>Early models: tritium lume, hollow end links, lug holes</li>
+                                <li>Later models: Luminova/Super-LumiNova, solid end links, no lug holes</li>
+                                <li>Ref. 16610LV "Kermit" (2003): 50th anniversary green bezel</li>
+                                <li>Engraved rehaut added circa 2007</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reference 116610 (2010-2020) -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-year">2010 - 2020</div>
+                            <h3>Reference 116610</h3>
+                            <p class="model-description">Ceramic evolution. The "Super Case" design with Cerachrom bezel brought modern materials and increased robustness to the Submariner.</p>
+                        </div>
+                        <div class="model-image">
+                            <img src="submariner-116610.jpg" alt="Rolex Submariner 116610">
+                        </div>
+                    </div>
+                    <div class="model-features">
+                        <div class="features-grid">
+                            <div class="feature">
+                                <div class="feature-label">Case Size</div>
+                                <div class="feature-value">40mm</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Movement</div>
+                                <div class="feature-value">Cal. 3135</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Water Resistance</div>
+                                <div class="feature-value">300m (1,000ft)</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Bezel</div>
+                                <div class="feature-value">Cerachrom</div>
+                            </div>
+                        </div>
+                        <div class="highlights">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Virtually scratchproof Cerachrom ceramic bezel insert</li>
+                                <li>"Super Case" with thicker lugs and crown guards</li>
+                                <li>Maxi dial with larger hour markers and hands</li>
+                                <li>Chromalight blue lume for improved visibility</li>
+                                <li>Ref. 116610LV "Hulk": green dial and green bezel</li>
+                                <li>Glidelock clasp extension system on bracelet</li>
+                                <li>Solid center links on Oyster bracelet</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reference 126610 (2020-Present) -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-year">2020 - Present</div>
+                            <h3>Reference 126610</h3>
+                            <p class="model-description">The current generation. Enhanced movement technology and refined proportions represent the pinnacle of Submariner evolution while honoring its heritage.</p>
+                        </div>
+                        <div class="model-image">
+                            <img src="submariner-126610.jpeg" alt="Rolex Submariner 126610">
+                        </div>
+                    </div>
+                    <div class="model-features">
+                        <div class="features-grid">
+                            <div class="feature">
+                                <div class="feature-label">Case Size</div>
+                                <div class="feature-value">41mm</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Movement</div>
+                                <div class="feature-value">Cal. 3235</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Water Resistance</div>
+                                <div class="feature-value">300m (1,000ft)</div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-label">Power Reserve</div>
+                                <div class="feature-value">70 hours</div>
+                            </div>
+                        </div>
+                        <div class="highlights">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>New generation Cal. 3235 with extended 70-hour power reserve</li>
+                                <li>Slightly larger 41mm case for modern proportions</li>
+                                <li>Slimmer lugs despite larger case size</li>
+                                <li>Chronergy escapement for improved efficiency</li>
+                                <li>Ref. 126610LV: "Starbucks" with black dial, green bezel</li>
+                                <li>Ref. 124060: No-date variant continues</li>
+                                <li>Enhanced bracelet with refined Glidelock system</li>
+                                <li>Improved anti-magnetic properties</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>An Enthusiast's Reference Guide — Not affiliated with Rolex SA</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection observer for timeline items
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
