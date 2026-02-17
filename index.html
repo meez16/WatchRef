@@ -1231,6 +1231,7 @@
         // ── Watch Dial Scroll Tracker ─────────────────────────────
         const minuteHand   = document.getElementById('minute-hand');
         const refDateLabel = document.getElementById('scroll-ref-date');
+        const hourHand     = document.querySelector('.scroll-tracker svg g[transform^="rotate"]');
 
         // Map each timeline item to its date range
         const refDates = [
@@ -1265,13 +1266,21 @@
 
         timelineItems.forEach(item => dialObserver.observe(item));
 
-        // Rotate minute hand on scroll
+        // Rotate both hands on scroll
+        // Minute hand: full 360° sweep
+        // Hour hand: 2 o'clock (60°) → 3 o'clock (90°), i.e. 30° sweep
         window.addEventListener('scroll', () => {
             const scrollTop  = window.scrollY;
             const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
             const progress   = Math.min(scrollTop / docHeight, 1);
-            const degrees    = progress * 360;
-            minuteHand.style.transform = `rotate(${degrees}deg)`;
+
+            // Minute hand — full rotation
+            const minuteDeg = progress * 360;
+            minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
+
+            // Hour hand — sweeps from 60° (2 o'clock) to 90° (3 o'clock)
+            const hourDeg = 60 + (progress * 30);
+            hourHand.setAttribute('transform', `rotate(${hourDeg}, 50, 50)`);
         });
     </script>
 </body>
